@@ -1,9 +1,9 @@
 #!/bin/bash
-# Linux OS Hardening Script - Run as root
+# Run as root
 
 LOG_FILE="/var/log/hardening.log"
 
-# Function to log actions
+# Log actions
 log_action() {
     echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }

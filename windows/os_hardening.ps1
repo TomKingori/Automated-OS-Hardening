@@ -1,7 +1,6 @@
-# Automated Windows OS Hardening Script
-# Run this script as Administrator
+# Run this as Administrator
 
-# Function to log actions
+# Log actions
 function Log-Action {
     param (
         [string]$message
@@ -11,7 +10,7 @@ function Log-Action {
     Add-Content -Path $logFile -Value "$timestamp - $message"
 }
 
-# Function to disable a service safely
+# Disable a service safely
 function Disable-Service-Safely {
     param ([string]$serviceName)
     $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
@@ -99,7 +98,7 @@ function Harden-ApplicationSecurity {
     Get-WindowsUpdate -Install -AcceptAll -IgnoreReboot | Out-Null
     Log-Action "Installed Windows Updates"
 
-    # Disable Office Macros (if Office is installed)
+    # Disable Office Macros (if Office installed)
     $officeVersions = @("16.0", "15.0", "14.0", "12.0")
     foreach ($version in $officeVersions) {
         $path = "HKCU:\Software\Microsoft\Office\$version\Word\Security"
